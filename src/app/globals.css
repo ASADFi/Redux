@@ -1,33 +1,40 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.add-user{
+  height: 200px;
+  padding:10px ;
+  padding-left: 50px;
+  border: 10px solid #8484;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.display-user{
+  height: 200px;
+  padding:10px ;
+  padding-left:50px ;
+  border: 10px solid rgba(252, 72, 7, 0.267);
+  margin-top: 10px;
+  overflow-y: auto;
 }
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.input-user{
+  height: 45px;
+  width:250px ;
+  border: 1px solid rgba(252, 72, 7, 0.267);
+  display: block;
+  
 }
+.botton-user{
+  height: 35px;
+  width:250px ;
+  border: 1px solid rgba(252, 72, 7, 0.267);
+  display: block;
+  margin-top: 20px;
+  
+}
+.display-data{
+  background-color: aqua;
+    margin-top: 10px;
+    padding: 5px;
+    width: 200px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
 }
