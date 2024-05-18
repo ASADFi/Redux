@@ -10,7 +10,7 @@
   padding-left:50px ;
   border: 10px solid rgba(252, 72, 7, 0.267);
   margin-top: 10px;
-  overflow-y: auto;
+  overflow: scroll;
 }
 .input-user{
   height: 45px;

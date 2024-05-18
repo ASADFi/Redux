@@ -19,7 +19,7 @@ export default function AddUser() {
         placeholder="Add Users"
         onChange={(e) => setName(e.target.value)}
       />
-      <button onClick={userDispatch} className="botton-user">
+      <button onClick={userDispatch} className="botton-user"> 
         Add User
       </button>
     </div>
