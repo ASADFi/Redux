@@ -10,9 +10,12 @@ export default function AddUser() {
     console.log("hallo it working", name);
     Dispatch(addUser(name))
   };
+  console.log("hallo")
   return (
+    
     <div className="add-user">
       <h3>Add Users</h3>
+      
       <input
         type="text"
         className="input-user"
