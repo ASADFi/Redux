@@ -1,7 +1,17 @@
+"use client";
+import { useEffect, useState } from 'react';
 import { createSlice, current, nanoid } from "@reduxjs/toolkit";
 
+const getInitialUsers = () => {
+  if (typeof window !== 'undefined') {
+    const usersFromLocalStorage = localStorage.getItem("users");
+    return usersFromLocalStorage ? JSON.parse(usersFromLocalStorage) : [];
+  }
+  return [];
+};
+
 const initialState = {
-  users: JSON.parse(localStorage.getItem("users")) ? JSON.parse(localStorage.getItem("users")) : [],
+  users:getInitialUsers() ,
 };
 
 const slice = createSlice({
@@ -14,13 +24,17 @@ const slice = createSlice({
         name: action.payload,
       };
       state.users.push(data);
-      let Userdata = JSON.stringify(current(state.users));
-      localStorage.setItem("users", Userdata);
+      if (typeof window !== 'undefined') {
+        let Userdata = JSON.stringify(current(state.users));
+        localStorage.setItem("users", Userdata);
+      }
     },
     removeUser: (state, action) => {
       const data = state.users.filter((item) => item.id !== action.payload);
       state.users = data;
-      localStorage.setItem("users", JSON.stringify(data)); // Update local storage with filtered users
+      if (typeof window !== 'undefined') {
+        localStorage.setItem("users", JSON.stringify(data));
+      }
     },
   },
 });

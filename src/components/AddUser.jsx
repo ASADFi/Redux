@@ -2,6 +2,7 @@
 import { addUser } from "@/app/redux/slice";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import Link from "next/link";
 
 export default function AddUser() {
   const [name, setName] = useState("");
@@ -25,6 +26,9 @@ export default function AddUser() {
       <button onClick={userDispatch} className="botton-user"> 
         Add User
       </button>
+<button><Link rel="stylesheet" href="/todolist" >todolist</Link></button>
+      
+      
     </div>
   );
 }
