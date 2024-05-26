@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from 'react';
-import { createSlice, current, nanoid } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, current, nanoid } from "@reduxjs/toolkit";
 
 const getInitialUsers = () => {
   if (typeof window !== 'undefined') {
@@ -12,7 +12,15 @@ const getInitialUsers = () => {
 
 const initialState = {
   users:getInitialUsers() ,
+  FetchAPIuser:[""]
 };
+
+
+export const  FetchAPIuser= createAsyncThunk("FetchAPIuser",async()=>{
+  const result = await fetch("https://jsonplaceholder.typicode.com/users");
+  
+  return  result.json();
+});
 
 const slice = createSlice({
   name: "addUserSlice",
@@ -37,6 +45,13 @@ const slice = createSlice({
       }
     },
   },
+  extraReducers:(builder)=>{
+    builder.addCase(FetchAPIuser.fulfilled,(state,action)=>{
+      console.log("action",action)
+      state.isloading=false
+      state.FetchAPIuser=action.payload
+    })
+  }
 });
 
 export const { addUser, removeUser } = slice.actions;
